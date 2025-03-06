@@ -231,37 +231,29 @@ POST /orders/{orderNumber}/reject
 }
 ```
 
-I'll add some basic unit test setup instructions to the documentation and include a few example test cases. I'll focus on unit tests specifically for the `ApprovalService` class since that's a key component of your system.
-
 ### Testing
 
 # Configure database in .env
+```
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_DATABASE=your_database
 DB_USERNAME=your_username
 DB_PASSWORD=your_password
-
-# Configure testing database in phpunit.xml
-<env name="DB_DATABASE" value="your_test_database"/>
+```
 
 # Run migrations
+```
 php artisan migrate
 php artisan migrate --env=testing
+```
 
 # Optional: Seed database with test data
+```
 php artisan db:seed
 php artisan db:seed --env=testing
 ```
-
-3. **Project Structure Assumptions**
-- Models: `Order`, `OrderHistory`, `User`
-- Enums: `OrderStatus`
-- Resources: `OrderResource`
-- Requests: `CreateOrderRequest`
-- Services: `OrderService`, `ApprovalService`
-- Tests: Located in `tests/Unit/`
 
 4. **Running Tests**
 ```bash
@@ -271,21 +263,9 @@ php artisan test
 # Run specific test file
 php artisan test --filter=ApprovalServiceTest
 
-# Run with coverage
-php artisan test --coverage
 ```
 
-5. **Required Configuration**
-- Set up Laravel authentication (Sanctum/Passport)
-- Configure middleware for API routes
-- Ensure proper relationships in models (Order hasMany Items, History)
-- Create test database and configure in `phpunit.xml`
-
 ---
-
-### Updates to API Documentation
-
-I'll add a small note about testing to the documentation:
 
 #### Testing
 - Unit tests are available in `tests/Unit/`
